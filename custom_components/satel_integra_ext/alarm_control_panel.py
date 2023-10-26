@@ -5,7 +5,7 @@ import asyncio
 from collections import OrderedDict
 import logging
 
-from satel_integra.satel_integra import AlarmState
+from satel_integra_ext.satel_integra import AlarmState
 
 import homeassistant.components.alarm_control_panel as alarm
 from homeassistant.components.alarm_control_panel import AlarmControlPanelEntityFeature

@@ -2,7 +2,7 @@
 import collections
 import logging
 
-from satel_integra2.satel_integra import AsyncSatel
+from satel_integra_ext.satel_integra import AsyncSatel
 import voluptuous as vol
 
 from homeassistant.const import CONF_HOST, CONF_PORT, EVENT_HOMEASSISTANT_STOP, Platform

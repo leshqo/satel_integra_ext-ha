@@ -20,7 +20,7 @@ from . import (
 
 _LOGGER = logging.getLogger(__name__)
 
-DEPENDENCIES = ["satel_integra"]
+DEPENDENCIES = ["satel_integra_ext"]
 
 
 async def async_setup_platform(

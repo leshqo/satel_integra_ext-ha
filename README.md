@@ -1,6 +1,6 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 
-# Alternative Satel Integra
+# Satel Integra Extended
 
 The integration is based on build in Home Assistant [Satel Integra integration](https://www.home-assistant.io/integrations/satel_integra/).
 It provides the following additional features comparing to the mainstream integration:
@@ -12,7 +12,7 @@ The `satel_integra` integration will allow Home Assistant users who own a Satel 
 There is currently support for the following device types within Home Assistant:
 
 - Binary Sensor: Reports on zone or output statuses
-- Switch: allows for setting states of selected outputs 
+- Switch: allows for setting states of selected outputs
 - Alarm Control Panel: represents the zones (in Polish: "strefa"). Reports its status, and can be used to arm/disarm the partition
 
 The module communicates via Satel's open TCP protocol published on their website. It subscribes for new events coming from alarm system and reacts to them immediately.
@@ -88,7 +88,7 @@ List of the partitions to operate on.
   - *required*: false
   - *type*: [integer, list]
 
-        
+
 &nbsp;&nbsp;&nbsp;&nbsp;**name**
 
 &nbsp;&nbsp;&nbsp;&nbsp;Name of the partition.
@@ -204,10 +204,10 @@ satel_integra:
     05:
       name: "Gate open"
     06:
-      name: "Gate close"    
+      name: "Gate close"
     14:
       name: "Garden light"
-      
+
 ```
 
 Having configured the zones and the outputs, you can use them for automation, such as to react on the movement in your bedroom.
