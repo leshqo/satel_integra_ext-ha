@@ -24,30 +24,26 @@ A list of all partition, zone and output IDs can be acquired by running DloadX p
 For the Binary Sensor check the [type/class](https://www.home-assistant.io/integrations/binary_sensor/) list for a possible visualization of your zones. Note: If no zones or outputs are specified, Home Assistant will not load any binary_sensor components.
 
 ### Manual installation
- - copy `custom_componetns/satel_integra` to your Home Assistant configuration folder
+ - copy `custom_componetns/satel_integra_ext` to your Home Assistant configuration folder
  - update `configuration.yaml` (see below)
  - restart Home Assistant
 
 ### Installation with HACS
 
- - add the repository to the [HACS custom repositories](https://hacs.xyz/docs/faq/custom_repositories)
+ - add the repository `https://github.com/leshqo/satel_integra_ext-ha` to the [HACS custom repositories](https://hacs.xyz/docs/faq/custom_repositories)
  - in HACS look for Satel Integra and install the integration
  - update `configuration.yaml` (see below)
  - restart Home Assistant
 
 ### Removal
 
-Uninstall in HACS or manually remove `satel_integra` folder from `custom_components`. After this, restart Home Assistant.
-
-Please note that `Alternative Satel Integra` overrides core `Satel Integra`, so after removal the core integration
-will start working. To avoid this, remove `satel_integra` entries from `configuration.yaml`
+Uninstall in HACS or manually remove `satel_integra_ext` folder from `custom_components`. After this, restart Home Assistant.
 
 ## Configuration
 
-The configuration is compatible with the original [Satel Integra](https://www.home-assistant.io/integrations/satel_integra/). Therefore, migration to `Alternative Satel Integra`
-doesn't require any modifications unless a user wants to use new features.
+The configuration is compatible with the original [Satel Integra](https://www.home-assistant.io/integrations/satel_integra/). And the only change needed to use this integration is to change  `satel_integra` to `satel_integra_ext`new features.
 
-A `satel_integra` section must be present in the `configuration.yaml` file:
+A `satel_integra_ext` section must be present in the `configuration.yaml` file:
 
 ```yaml
 # Example configuration.yaml entry

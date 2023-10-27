@@ -7,5 +7,5 @@
   "issue_tracker": "https://github.com/leshqo/satel_integra_ext",
   "loggers": ["satel_integra_ext"],
   "requirements": ["satel_integra_ext==0.4.4"],
-  "version": "1.0.2"
+  "version": "1.0.3"
 }
