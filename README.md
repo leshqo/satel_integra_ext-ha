@@ -5,9 +5,7 @@
 The integration is based on build in Home Assistant [Satel Integra integration](https://www.home-assistant.io/integrations/satel_integra/).
 It provides the following additional features comparing to the mainstream integration:
 
-  - encrypted communication (see `integration_key` configuration variable)
-
-The `satel_integra` integration will allow Home Assistant users who own a Satel Integra alarm panel to leverage their alarm system and its sensors to provide Home Assistant with information about their homes. Connectivity between Home Assistant and the alarm is accomplished through a ETHM extension module that must be installed in the alarm. Compatible with ETHM-1 Plus module with firmware version > 2.00 (version 2.04 confirmed).
+The `satel_integra_ext` integration will allow Home Assistant users who own a Satel Integra alarm panel to leverage their alarm system and its sensors to provide Home Assistant with information about their homes. Connectivity between Home Assistant and the alarm is accomplished through a ETHM extension module that must be installed in the alarm. Compatible with ETHM-1 Plus module with firmware version > 2.00 (version 2.04 confirmed).
 
 There is currently support for the following device types within Home Assistant:
 
@@ -53,7 +51,7 @@ A `satel_integra` section must be present in the `configuration.yaml` file:
 
 ```yaml
 # Example configuration.yaml entry
-satel_integra:
+satel_integra_ext:
   host: IP_ADDRESS
 ```
 
@@ -165,7 +163,7 @@ Switchable outputs. These will show up as switches within Home Assistant.
 
 ```yaml
 # Example configuration.yaml entry
-satel_integra:
+satel_integra_ext:
   host: 192.168.1.100
   port: 7094
   partitions:

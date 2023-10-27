@@ -20,7 +20,6 @@ from . import (
     SIGNAL_ZONES_UPDATED,
 )
 
-
 async def async_setup_platform(
     hass: HomeAssistant,
     config: ConfigType,

@@ -48,7 +48,6 @@ async def async_setup_platform(
 
     async_add_entities(devices)
 
-
 class SatelIntegraSwitch(SwitchEntity):
     """Representation of an Satel switch."""
 

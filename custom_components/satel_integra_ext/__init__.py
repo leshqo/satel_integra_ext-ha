@@ -60,14 +60,12 @@ PARTITION_SCHEMA = vol.Schema(
     }
 )
 
-
 def is_alarm_code_necessary(value):
     """Check if alarm code must be configured."""
     if value.get(CONF_SWITCHABLE_OUTPUTS) and CONF_DEVICE_CODE not in value:
         raise vol.Invalid("You need to specify alarm code to use switchable_outputs")
 
     return value
-
 
 CONFIG_SCHEMA = vol.Schema(
     {
@@ -91,7 +89,6 @@ CONFIG_SCHEMA = vol.Schema(
     },
     extra=vol.ALLOW_EXTRA,
 )
-
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Set up the Satel Integra component."""
