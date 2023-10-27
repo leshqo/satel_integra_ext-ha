@@ -20,7 +20,7 @@ DEFAULT_ZONE_TYPE = "motion"
 
 _LOGGER = logging.getLogger(__name__)
 
-DOMAIN = "satel_integra"
+DOMAIN = "satel_integra_ext"
 
 DATA_SATEL = "satel_integra"
 
@@ -110,7 +110,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     )
 
     controller = AsyncSatel(
-        host, port, hass.loop, zones, monitored_outputs, partitions, integration_key)
+        host, port, hass.loop, zones, monitored_outputs, partitions) #, integration_key)
 
     hass.data[DATA_SATEL] = controller
 
