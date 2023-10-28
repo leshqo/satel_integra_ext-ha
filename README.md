@@ -41,7 +41,7 @@ Uninstall in HACS or manually remove `satel_integra_ext` folder from `custom_com
 
 ## Configuration
 
-The configuration is compatible with the original [Satel Integra](https://www.home-assistant.io/integrations/satel_integra/). And the only change needed to use this integration is to change  `satel_integra` to `satel_integra_ext`new features.
+The configuration is compatible with the original [Satel Integra](https://www.home-assistant.io/integrations/satel_integra/). And the only change needed to use this integration is to change  `satel_integra` to `satel_integra_ext`
 
 A `satel_integra_ext` section must be present in the `configuration.yaml` file:
 
