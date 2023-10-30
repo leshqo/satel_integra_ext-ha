@@ -16,6 +16,7 @@ from . import (
     CONF_ZONE_NAME,
     DATA_SATEL,
     SIGNAL_OUTPUTS_UPDATED,
+    DOMAIN,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -60,6 +61,7 @@ class SatelIntegraSwitch(SwitchEntity):
         self._state = False
         self._code = code
         self._satel = controller
+        self._attr_unique_id = f"${DOMAIN}.output${device_number}"
 
     async def async_added_to_hass(self) -> None:
         """Register callbacks."""

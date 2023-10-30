@@ -27,6 +27,7 @@ from . import (
     CONF_ZONE_NAME,
     DATA_SATEL,
     SIGNAL_PANEL_MESSAGE,
+    DOMAIN,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -75,6 +76,7 @@ class SatelIntegraAlarmPanel(alarm.AlarmControlPanelEntity):
         self._arm_home_mode = arm_home_mode
         self._partition_id = partition_id
         self._satel = controller
+        self._attr_unique_id = f"${DOMAIN}.zone${partition_id}"
 
     async def async_added_to_hass(self) -> None:
         """Update alarm status and register callbacks for future updates."""

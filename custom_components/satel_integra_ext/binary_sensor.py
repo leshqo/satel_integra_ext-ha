@@ -18,6 +18,7 @@ from . import (
     DATA_SATEL,
     SIGNAL_OUTPUTS_UPDATED,
     SIGNAL_ZONES_UPDATED,
+    DOMAIN,
 )
 
 async def async_setup_platform(
@@ -71,6 +72,7 @@ class SatelIntegraBinarySensor(BinarySensorEntity):
         self._state = 0
         self._react_to_signal = react_to_signal
         self._satel = controller
+        self._attr_unique_id = f"${DOMAIN}.input${device_number}"
 
     async def async_added_to_hass(self) -> None:
         """Register callbacks."""
