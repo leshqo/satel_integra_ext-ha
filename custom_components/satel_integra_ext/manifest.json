@@ -6,6 +6,6 @@
   "iot_class": "local_push",
   "issue_tracker": "https://github.com/leshqo/satel_integra_ext",
   "loggers": ["satel_integra_ext"],
-  "requirements": ["satel_integra_ext==0.4.5"],
+  "requirements": ["satel_integra_ext==0.4.6"],
   "version": "1.0.4"
 }
