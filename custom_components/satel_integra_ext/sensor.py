@@ -48,7 +48,7 @@ class SatelIntegraTemperatureSensor(SensorEntity):
     ):
         """Initialize the sensor."""
         self._name = device_name
-        self._attr_unique_id = f"{DOMAIN}.{controller._host}.temp{device_number}"
+        self._attr_unique_id = f"${DOMAIN}.temp${device_number}"
         self._device_number = device_number
         self._satel = controller
 

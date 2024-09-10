@@ -72,7 +72,7 @@ class SatelIntegraBinarySensor(BinarySensorEntity):
         self._state = 0
         self._react_to_signal = react_to_signal
         self._satel = controller
-        self._attr_unique_id = f"{DOMAIN}.{controller._host}.input{device_number}"
+        self._attr_unique_id = f"${DOMAIN}.input${device_number}"
 
     async def async_added_to_hass(self) -> None:
         """Register callbacks."""
