@@ -155,6 +155,18 @@ Switchable outputs. These will show up as switches within Home Assistant.
   - *required*: true
   - *type*: string
 
+#### temperature_sensors
+Temperature sensors. These will show up as sensors within Home Assistant.
+
+  - *required*: false
+  - *type*: [list]
+
+&nbsp;&nbsp;&nbsp;&nbsp;**name**
+
+&nbsp;&nbsp;&nbsp;&nbsp;Name of the output.
+
+- *required*: true
+
 ## Full examples
 
 ```yaml
@@ -201,6 +213,11 @@ satel_integra_ext:
       name: "Gate close"
     14:
       name: "Garden light"
+  temperature_sensors:
+    21:
+      name: "Kitchen temperature"
+    22:
+      name: "Living room temperature"
 
 ```
 

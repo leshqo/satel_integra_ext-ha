@@ -31,8 +31,10 @@ CONF_ZONE_NAME = "name"
 CONF_ZONE_TYPE = "type"
 CONF_ZONES = "zones"
 CONF_OUTPUTS = "outputs"
+CONF_TEMP_SENSORS = "temperature_sensors"
 CONF_SWITCHABLE_OUTPUTS = "switchable_outputs"
 CONF_INTEGRATION_KEY = "integration_key"
+CONF_TEMP_SENSOR_NAME = "name"
 
 ZONES = "zones"
 
@@ -59,6 +61,11 @@ PARTITION_SCHEMA = vol.Schema(
         ),
     }
 )
+TEMP_SENSOR_SCHEMA = vol.Schema(
+    {
+        vol.Required(CONF_TEMP_SENSOR_NAME): cv.string,
+    }
+)
 
 def is_alarm_code_necessary(value):
     """Check if alarm code must be configured."""
@@ -83,6 +90,7 @@ CONFIG_SCHEMA = vol.Schema(
                     vol.Coerce(int): EDITABLE_OUTPUT_SCHEMA
                 },
                 vol.Optional(CONF_INTEGRATION_KEY, default=''): cv.string,
+                vol.Optional(CONF_TEMP_SENSORS, default={}): {vol.Coerce(int): TEMP_SENSOR_SCHEMA},
             },
             is_alarm_code_necessary,
         )
@@ -151,6 +159,17 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         )
     )
 
+    hass.async_create_task(
+        async_load_platform(
+            hass,
+            Platform.SENSOR,
+            DOMAIN,
+            {
+                CONF_TEMP_SENSORS: conf.get(CONF_TEMP_SENSORS),
+            },
+            config,
+        )
+    )
     @callback
     def alarm_status_update_callback():
         """Send status update received from alarm to Home Assistant."""

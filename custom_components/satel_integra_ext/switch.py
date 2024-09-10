@@ -61,7 +61,7 @@ class SatelIntegraSwitch(SwitchEntity):
         self._state = False
         self._code = code
         self._satel = controller
-        self._attr_unique_id = f"${DOMAIN}.output${device_number}"
+        self._attr_unique_id = f"{DOMAIN}.{controller._host}.output{device_number}"
 
     async def async_added_to_hass(self) -> None:
         """Register callbacks."""
