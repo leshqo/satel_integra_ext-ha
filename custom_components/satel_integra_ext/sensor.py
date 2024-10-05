@@ -9,9 +9,12 @@ from homeassistant.const import UnitOfTemperature
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
-from . import (
+
+from .entity import SatelIntegraEntity
+from .const import (
     DATA_SATEL,
-    DOMAIN, CONF_TEMP_SENSORS, CONF_TEMP_SENSOR_NAME,
+    CONF_TEMP_SENSORS,
+    CONF_TEMP_SENSOR_NAME,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -36,7 +39,7 @@ async def async_setup_platform(
 PARALLEL_UPDATES = 0
 SCAN_INTERVAL = timedelta(seconds=120)
 
-class SatelIntegraTemperatureSensor(SensorEntity):
+class SatelIntegraTemperatureSensor(SatelIntegraEntity, SensorEntity):
     """Representation of an Satel Integra temperature sensor."""
 
     _attr_device_class = SensorDeviceClass.TEMPERATURE
@@ -47,15 +50,7 @@ class SatelIntegraTemperatureSensor(SensorEntity):
         self, controller, device_number, device_name
     ):
         """Initialize the sensor."""
-        self._name = device_name
-        self._attr_unique_id = f"${DOMAIN}.temp${device_number}"
-        self._device_number = device_number
-        self._satel = controller
-
-    @property
-    def name(self):
-        """Return the name of the entity."""
-        return self._name
+        super().__init__(controller, device_number, device_name, "temp")
 
     async def async_update(self) -> None:
         # generate random temperature between 20.5 and 22.5

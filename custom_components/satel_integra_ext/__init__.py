@@ -1,6 +1,5 @@
 """Support for Satel Integra devices."""
 import collections
-import logging
 
 from satel_integra_ext.satel_integra import AsyncSatel
 import voluptuous as vol
@@ -12,39 +11,14 @@ from homeassistant.helpers.discovery import async_load_platform
 from homeassistant.helpers.dispatcher import async_dispatcher_send
 from homeassistant.helpers.typing import ConfigType
 
-DEFAULT_ALARM_NAME = "satel_integra"
-DEFAULT_PORT = 7094
-DEFAULT_CONF_ARM_HOME_MODE = 1
-DEFAULT_DEVICE_PARTITION = 1
-DEFAULT_ZONE_TYPE = "motion"
-
-_LOGGER = logging.getLogger(__name__)
-
-DOMAIN = "satel_integra_ext"
-
-DATA_SATEL = "satel_integra"
-
-CONF_DEVICE_CODE = "code"
-CONF_DEVICE_PARTITIONS = "partitions"
-CONF_ARM_HOME_MODE = "arm_home_mode"
-CONF_ZONE_NAME = "name"
-CONF_ZONE_TYPE = "type"
-CONF_ZONES = "zones"
-CONF_OUTPUTS = "outputs"
-CONF_TEMP_SENSORS = "temperature_sensors"
-CONF_SWITCHABLE_OUTPUTS = "switchable_outputs"
-CONF_INTEGRATION_KEY = "integration_key"
-CONF_TEMP_SENSOR_NAME = "name"
-
-ZONES = "zones"
-
-SIGNAL_PANEL_MESSAGE = "satel_integra.panel_message"
-SIGNAL_PANEL_ARM_AWAY = "satel_integra.panel_arm_away"
-SIGNAL_PANEL_ARM_HOME = "satel_integra.panel_arm_home"
-SIGNAL_PANEL_DISARM = "satel_integra.panel_disarm"
-
-SIGNAL_ZONES_UPDATED = "satel_integra.zones_updated"
-SIGNAL_OUTPUTS_UPDATED = "satel_integra.outputs_updated"
+from .const import (
+    _LOGGER, DOMAIN, CONF_DEVICE_CODE, CONF_DEVICE_PARTITIONS, CONF_ARM_HOME_MODE,
+    CONF_ZONES, CONF_OUTPUTS, CONF_TEMP_SENSORS, CONF_SWITCHABLE_OUTPUTS, CONF_INTEGRATION_KEY,
+    DEFAULT_PORT, DEFAULT_CONF_ARM_HOME_MODE, DEFAULT_ZONE_TYPE,
+    DATA_SATEL, CONF_DEVICE_CODE, CONF_DEVICE_PARTITIONS, CONF_ARM_HOME_MODE, CONF_ZONE_NAME, CONF_ZONE_TYPE,
+    CONF_ZONES, CONF_OUTPUTS, CONF_TEMP_SENSORS, CONF_SWITCHABLE_OUTPUTS, CONF_INTEGRATION_KEY, CONF_TEMP_SENSOR_NAME,
+    ZONES, SIGNAL_PANEL_MESSAGE, SIGNAL_ZONES_UPDATED, SIGNAL_OUTPUTS_UPDATED
+)
 
 ZONE_SCHEMA = vol.Schema(
     {
