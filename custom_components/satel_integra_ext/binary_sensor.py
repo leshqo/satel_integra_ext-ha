@@ -10,15 +10,15 @@ from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 
-from . import (
+from .entity import SatelIntegraEntity
+from .const import (
     CONF_OUTPUTS,
     CONF_ZONE_NAME,
     CONF_ZONE_TYPE,
     CONF_ZONES,
     DATA_SATEL,
     SIGNAL_OUTPUTS_UPDATED,
-    SIGNAL_ZONES_UPDATED,
-    DOMAIN,
+    SIGNAL_ZONES_UPDATED
 )
 
 async def async_setup_platform(
@@ -40,7 +40,7 @@ async def async_setup_platform(
         zone_type = device_config_data[CONF_ZONE_TYPE]
         zone_name = device_config_data[CONF_ZONE_NAME]
         device = SatelIntegraBinarySensor(
-            controller, zone_num, zone_name, zone_type, SIGNAL_ZONES_UPDATED
+            controller, zone_num, zone_name, zone_type, "input", SIGNAL_ZONES_UPDATED
         )
         devices.append(device)
 
@@ -50,29 +50,26 @@ async def async_setup_platform(
         zone_type = device_config_data[CONF_ZONE_TYPE]
         zone_name = device_config_data[CONF_ZONE_NAME]
         device = SatelIntegraBinarySensor(
-            controller, zone_num, zone_name, zone_type, SIGNAL_OUTPUTS_UPDATED
+            controller, zone_num, zone_name, zone_type, "input", SIGNAL_OUTPUTS_UPDATED
         )
         devices.append(device)
 
     async_add_entities(devices)
 
 
-class SatelIntegraBinarySensor(BinarySensorEntity):
+class SatelIntegraBinarySensor(SatelIntegraEntity, BinarySensorEntity):
     """Representation of an Satel Integra binary sensor."""
 
     _attr_should_poll = False
 
     def __init__(
-        self, controller, device_number, device_name, zone_type, react_to_signal
+        self, controller, device_number, device_name, zone_type, device_type, react_to_signal
     ):
         """Initialize the binary_sensor."""
-        self._device_number = device_number
-        self._name = device_name
+        super().__init__(controller, device_number, device_name, device_type)
         self._zone_type = zone_type
         self._state = 0
         self._react_to_signal = react_to_signal
-        self._satel = controller
-        self._attr_unique_id = f"${DOMAIN}.input${device_number}"
 
     async def async_added_to_hass(self) -> None:
         """Register callbacks."""
@@ -91,11 +88,6 @@ class SatelIntegraBinarySensor(BinarySensorEntity):
                 self.hass, self._react_to_signal, self._devices_updated
             )
         )
-
-    @property
-    def name(self):
-        """Return the name of the entity."""
-        return self._name
 
     @property
     def icon(self):
