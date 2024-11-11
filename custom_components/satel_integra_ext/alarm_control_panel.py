@@ -34,7 +34,7 @@ STATE_MAP = OrderedDict(
         (AlarmState.ARMED_MODE3, AlarmControlPanelState.ARMED_HOME),
         (AlarmState.ARMED_MODE2, AlarmControlPanelState.ARMED_HOME),
         (AlarmState.ARMED_MODE1, AlarmControlPanelState.ARMED_HOME),
-        (AlarmState.ARMED_MODE0, AlarmControlPanelState.ARMED_HOME),
+        (AlarmState.ARMED_MODE0, AlarmControlPanelState.ARMED_AWAY),
         (AlarmState.EXIT_COUNTDOWN_OVER_10, AlarmControlPanelState.PENDING),
         (AlarmState.EXIT_COUNTDOWN_UNDER_10, AlarmControlPanelState.PENDING),
     ]
